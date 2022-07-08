@@ -4,7 +4,9 @@ import Header from "../components/header/Header";
 import Menus from "../components/menus/Menus";
 import data from "../helper/data";
 
-const allCategories = ["all"];
+//! with Set() method we take just 3 categories 👇
+//! with spread (...) we spread out these 3 categories 👇
+const allCategories = [...new Set(data.map((item) => item.category))];
 
 const Home = () => {
   return (
