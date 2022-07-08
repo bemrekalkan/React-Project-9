@@ -11,10 +11,18 @@ const allCategories = ["ALL", ...new Set(data.map((item) => item.category))];
 
 const Home = () => {
   const [menuItems, setMenuItems] = useState(data);
+  const filterItems = (categoryItem) => {
+    if (categoryItem === "ALL") {
+      setMenuItems(data);
+    } else {
+      const filtered = data.filter((item) => item.category === categoryItem);
+      setMenuItems(filtered);
+    }
+  };
   return (
     <div>
       <Header />
-      <Categories allCategories={allCategories} />
+      <Categories allCategories={allCategories} filterItems={filterItems} />
       <Menus menuItems={menuItems} />
     </div>
   );
